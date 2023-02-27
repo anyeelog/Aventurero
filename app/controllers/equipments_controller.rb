@@ -29,7 +29,7 @@ class EquipmentsController < ApplicationController
   end
 
   def destroy
-    @restaurant.destroy
+    @equipment.destroy
     redirect_to equipments_path, status: :see_other
   end
 
