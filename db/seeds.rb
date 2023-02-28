@@ -22,7 +22,7 @@ puts 'Creating 5 fake users with 5 fake equipments...'
   5.times do
     equipment = Equipment.new(
       name: Faker::Superhero.name,
-      category: %s(tents ski caravans hiking surf),
+      category: ["tents", "ski", "caravans", "hiking", "surf"].sample,
       price: Faker::Number.decimal(l_digits: 2),
       description: Faker::Lorem.paragraph
     )
@@ -31,3 +31,16 @@ puts 'Creating 5 fake users with 5 fake equipments...'
   end
 end
 puts 'Finished!'
+
+# https://source.unsplash.com/random/
+
+# resource_type = "image"
+# type = "upload"
+# version = 1234567890
+# public_id = "fismpnq3zma80dc2ovjt"
+# format = "jpg"
+# signature = Cloudinary::Utils.api_sign_request({:public_id=>public_id,
+# :version=>version}, Cloudinary.config.api_secret)
+# photo = "#{resource_type}/#{type}/v#{version}/#{public_id}.#{format}##
+# {signature}"
+# Course.create!({ photo: photo )}
