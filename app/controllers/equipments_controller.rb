@@ -24,8 +24,11 @@ class EquipmentsController < ApplicationController
 
   def update
     @equipment = Equipment.find(params[:id])
-    @equipment.update(equipment_params)
-    redirect_to equipment_path(@equipment)
+    if @equipment.update(equipment_params)
+        redirect_to equipment_path(@equipment)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
