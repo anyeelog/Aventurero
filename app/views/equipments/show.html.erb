@@ -1,1 +1,26 @@
-<%= cl_image_tag @equipment.photo.key, height: 300, width: 400, crop: :fill %>
+
+<div class="container">
+
+  <div class="equipment-header">
+    <h2><%= @equipment.name %></h2>
+    <p>Listed by <%= @equipment.user.username %></p>
+  </div>
+
+  <div class="equipment-images">
+    <% if @equipment.photos.attached?  %>
+      <%= @equipment.photos.each do |photo|  %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="equipment-description">
+    <p><strong><%= @equipment.price %></strong> per day.</p>
+    <p><%= @equipment.description %></p>
+
+
+
+  <%#= render "bookings/new", equipment: @equipment %>
+
+</div>
+
