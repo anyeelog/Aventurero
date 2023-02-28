@@ -11,29 +11,22 @@
   <div class="equipment-cards">
     <% @equipments.each do |equipment| %>
       <div class="equipment-card">
-        <div class="equipment-card-img">
+        <div class="equipment-card-img" style="background-image: url('<%= cl_image_path equipment.photos.first.key %>')">
         </div>
 
-      <%= cl_image_tag equipment.photos.first.key, height: 300, width: 400, crop: :fill %>
-
-      <!-- <% equipment.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %> -->
-
-      <div class="w-100 d-flex justify-content-between align-items-center">
-        <div><strong><%= link_to equipment.name, equipment_path(equipment) %></strong></div>
-        <div><strong><%= equipment.price %>€</strong></div>
-      </div>
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <div><strong><%= link_to equipment.name, equipment_path(equipment) %></strong></div>
+          <div><strong><%= equipment.price %>€</strong></div>
+        </div>
 
         <div class="equipment-card-info">
           <!-- <div class="d-flex align-items-center">
             <div class="card-info-username-img"></div>
             <strong><%= equipment.user.username %></strong>
           </div> -->
-
           <div><%= equipment.description %></div>
 
-          <div class="equipment-card-category"><%= equipment.category %></div>
+          <div class="equipment-card-category">#<%= equipment.category %></div>
 
         </div>
       </div>
