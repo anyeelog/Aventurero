@@ -1,4 +1,8 @@
 class BookingsController < ApplicationController
+
+  def index
+  end
+
   def new
     @equipment = Equipment.find(params[:equipment_id])
     @booking = Booking.new
