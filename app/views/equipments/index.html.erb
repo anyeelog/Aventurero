@@ -1,0 +1,12 @@
+<div class="hero">
+  <div class="hero-box-one"></div>
+  <div class="hero-box-two"></div>
+</div>
+
+
+<h2>Equipments</h2>
+
+<% @equipments.each do |equipment| %>
+  <p><%= equipment.user.username %>
+  <%= equipment.name %></p>
+<% end %>
