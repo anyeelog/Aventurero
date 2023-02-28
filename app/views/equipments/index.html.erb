@@ -1,12 +1,37 @@
-<div class="hero">
-  <div class="hero-box-one"></div>
-  <div class="hero-box-two"></div>
+<div class="container">
+  <div class="hero">
+    <div class="hero-box-one">WE CAN PUT INFO HERE</div>
+    <div class="hero-box-two">WE CAN PUT INFO HERE TOO</div>
+  </div>
 </div>
 
 
-<h2>Equipments</h2>
+<div class="container">
+  <h2 style="margin-bottom: 50px;">Equipments</h2>
 
-<% @equipments.each do |equipment| %>
-  <p><%= equipment.user.username %>
-  <%= equipment.name %></p>
-<% end %>
+  <div class="equipment-cards">
+    <% @equipments.each do |equipment| %>
+      <div class="equipment-card">
+        <div class="equipment-card-img">
+        </div>
+
+        <div class="equipment-card-info">
+          <!-- <div class="d-flex align-items-center">
+            <div class="card-info-username-img"></div>
+            <strong><%= equipment.user.username %></strong>
+          </div> -->
+
+            <div class="w-100 d-flex justify-content-between align-items-center">
+              <div><strong><%= link_to equipment.name, equipment_path(equipment) %></strong></div>
+              <div><strong><%= equipment.price %>€</strong></div>
+            </div>
+
+            <div><%= equipment.description %></div>
+
+            <div class="equipment-card-category"><%= equipment.category %></div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
