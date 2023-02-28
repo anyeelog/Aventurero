@@ -7,7 +7,7 @@
 
     <div class="equipment-images">
       <% if @equipment.photos.attached?  %>
-        <%= @equipment.photos.each do |photo|  %>
+        <% @equipment.photos.each do |photo|  %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       <% end %>
@@ -15,10 +15,14 @@
 
     <div class="equipment-description">
       <h4><strong>€<%= @equipment.price %></strong> per day.</h4>
-      <p><%= @equipment.description %></p>
+      <span style="color: grey"> #<%= @equipment.category %></span>
+      <p>Description: <%= @equipment.description %></p>
+      <%= link_to "Back", :back %>
+    </div>
 
 
-
-    <%#= render "bookings/new", equipment: @equipment %>
+    <div class="new-booking-container">
+      <%= render "bookings/new", equipment: @equipment, booking: @booking %>
+    </div>
   </div>
 </div>
