@@ -10,6 +10,8 @@ require 'faker'
 require "open-uri"
 
 puts "Cleaning database..."
+Booking.destroy_all
+Equipment.destroy_all
 User.destroy_all
 
 puts 'Creating 5 fake users with 5 fake equipments...'
@@ -18,7 +20,7 @@ puts 'Creating 5 fake users with 5 fake equipments...'
     username: Faker::Internet.username,
     email: Faker::Internet.email,
     address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
-    password: Faker::Internet.password(min_length: 6)
+    password: "123456"
   )
   user.save!
 
@@ -40,8 +42,24 @@ puts 'Creating 5 fake users with 5 fake equipments...'
       i += 1
     end
     equipment.save!
+
   end
 end
 puts 'Finished!'
 
+   Booking.create!(
+    start_date: Date.today,
+    user_id: User.first.id,
+    equipment_id: Equipment.first.id,
+    end_date: Date.today + 1,
+    total_price: 100
+  )
+
+  Booking.create!(
+    start_date: Date.today,
+    user_id: User.first.id,
+    equipment_id: Equipment.last.id,
+    end_date: Date.today + 1,
+    total_price: 150
+    )
 # link to get random photos from internet: https://source.unsplash.com/random/

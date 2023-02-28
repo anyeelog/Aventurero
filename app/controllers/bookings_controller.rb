@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
+    @my_bookings = Booking.all.where(user_id: current_user.id)
   end
 
   def new
@@ -26,12 +28,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:equipment_id)
-  end
-
-    def search
-      @query = params[:query]
-      @results = Post.where("title LIKE ?", "%#{@query}%")
-    end
   end
 
 end

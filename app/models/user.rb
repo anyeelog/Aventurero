@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :equipments, dependent: :destroy
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :received_bookings, through: :equipments, source: :bookings
 
   validates :username, presence: true, uniqueness: true

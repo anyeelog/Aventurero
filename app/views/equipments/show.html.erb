@@ -16,9 +16,6 @@
     <div class="equipment-description">
       <h4><strong>€<%= @equipment.price %></strong> per day.</h4>
       <p><%= @equipment.description %></p>
-
-
-
-    <%#= render "bookings/new", equipment: @equipment %>
+    <%= render "bookings/new", equipment: @equipment %>
   </div>
 </div>
