@@ -7,6 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+require "open-uri"
+
+puts "Cleaning database..."
+User.destroy_all
 
 puts 'Creating 5 fake users with 5 fake equipments...'
 5.times do
@@ -17,9 +21,8 @@ puts 'Creating 5 fake users with 5 fake equipments...'
     password: Faker::Internet.password(min_length: 6)
   )
   user.save!
-  puts User.all
 
-  5.times do
+  2.times do
     equipment = Equipment.new(
       name: Faker::Superhero.name,
       category: ["tents", "ski", "caravans", "hiking", "surf"].sample,
@@ -27,20 +30,18 @@ puts 'Creating 5 fake users with 5 fake equipments...'
       description: Faker::Lorem.paragraph
     )
     equipment.user = user
+
+    i = 1
+
+    2.times do
+
+      file = URI.open("https://source.unsplash.com/random/")
+      equipment.photos.attach(io: file, filename: "#{equipment.name}#{i}.png", content_type: "image/png")
+      i += 1
+    end
     equipment.save!
   end
 end
 puts 'Finished!'
 
-# https://source.unsplash.com/random/
-
-# resource_type = "image"
-# type = "upload"
-# version = 1234567890
-# public_id = "fismpnq3zma80dc2ovjt"
-# format = "jpg"
-# signature = Cloudinary::Utils.api_sign_request({:public_id=>public_id,
-# :version=>version}, Cloudinary.config.api_secret)
-# photo = "#{resource_type}/#{type}/v#{version}/#{public_id}.#{format}##
-# {signature}"
-# Course.create!({ photo: photo )}
+# link to get random photos from internet: https://source.unsplash.com/random/
