@@ -1,0 +1,8 @@
+<div class= 'list'>
+  <%= simple_form_for @equipment, url: equipments_path do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit "submit", class: 'btn btn-primary' %>
+  <% end %>
+</div>
