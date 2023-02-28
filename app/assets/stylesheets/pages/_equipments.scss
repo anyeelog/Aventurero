@@ -1,17 +1,30 @@
 /* Stylesheet for the index equipments page (the "home") */
 
+body {
+  background-color: rgba(222, 192, 170, 0.4);
+}
+
 .hero {
   display: flex;
   height: 400px;
   margin: 50px 0 100px 0;
-  text-align: center;
-  font-weight: bold;
 
   .hero-box-one {
-    background-color: $orange;
+    // background-color: $orange;
+    background-image: url('https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2099&q=80');
+    background-size: cover;
+    background-position: center;
     border-radius: 50px;
     width: 60%;
     margin-right: 10px;
+  }
+
+  .hero-box-one h2 {
+    color: white;
+    font-size: 50px;
+    width: 50%;
+    font-weight: 700;
+    padding: 30px;
   }
 
   .hero-box-two {
@@ -19,4 +32,18 @@
     border-radius: 40px;
     width: 40%;
   }
+
+  .hero-box-two p {
+    color: white;
+    padding: 30px;
+    font-size: 18px;
+  }
+
+}
+
+.equipments-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 25px;
+  margin-bottom: 50px;
 }
