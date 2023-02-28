@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :equipment
 
-  validates :start_date, :end_date, presence: true, availability: true
+  validates :start_date, :end_date, presence: true
   # before_save :end_date_after_start_date
 
   # private
