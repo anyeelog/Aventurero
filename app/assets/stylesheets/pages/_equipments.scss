@@ -17,6 +17,7 @@ body {
     border-radius: 50px;
     width: 60%;
     margin-right: 10px;
+    padding: 30px;
   }
 
   .hero-box-one h2 {
@@ -24,7 +25,20 @@ body {
     font-size: 50px;
     width: 50%;
     font-weight: 700;
-    padding: 30px;
+    margin-bottom: 90px;
+  }
+
+  .hero-button {
+    padding: 15px 20px;
+    background-color: $yellow;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+
+  .hero-button:hover {
+    text-decoration: underline;
   }
 
   .hero-box-two {
