@@ -11,6 +11,8 @@ gem "sprockets-rails"
 
 gem "cloudinary"
 
+gem "geocoder"
+
 gem "dotenv-rails", groups: [:development, :test]
 
 # Use postgresql as the database for Active Record

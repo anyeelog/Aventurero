@@ -1,6 +1,13 @@
 class EquipmentsController < ApplicationController
   def index
     @equipments = Equipment.all
+    @markers = @equipments.geocoded.map do |equipment|
+      {
+        lat: equipment.latitude,
+        lng: equipment.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {equipment: equipment})
+      }
+    end
   end
 
   def new
