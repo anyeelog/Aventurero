@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
  #comment
   def index
     @my_bookings = Booking.all.where(user_id: current_user.id)
+    @received_bookings = current_user.received_bookings
+      @pending_bookings = current_user.received_bookings.where(status: "pending")
   end
 
   def new
@@ -13,10 +15,16 @@ class BookingsController < ApplicationController
   def create
     @equipment = Equipment.find(params[:equipment_id])
     @booking = Booking.new(booking_params)
-    @booking.equipment = @booking
+    @booking.equipment = @equipment
+    @booking.user = current_user
+    @booking.total_price = 100
     @booking.save
 
-    redirect_to equipment_path(@booking)
+    redirect_to bookings_path
+  end
+
+  def update
+    #get params sent by booking index and update status of booking accordingly
   end
 
   def destroy
@@ -27,7 +35,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:equipment_id)
+    params.require(:booking).permit(:equipment_id, :user_id, :status, :start_date, :end_date, :total_price)
   end
 
 end
