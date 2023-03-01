@@ -1,29 +1,37 @@
 <div class="equipment-container">
   <div class="container">
-    <div class="equipment-header">
-      <h2><%= @equipment.name %></h2>
-      <p>Listed by <strong><%= @equipment.user.username %></strong></p>
-    </div>
+    <div class="goback-button"><%= link_to "← Go back", :back %></div>
 
-    <div class="equipment-images">
-      <% if @equipment.photos.attached?  %>
-        <% @equipment.photos.each do |photo|  %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      <% end %>
-    </div>
+    <div class="equipment-show">
+      <!-- Left side -->
+      <div class="equipment-show-right">
+        <div class="equipment-description">
+          <h2 style="font-weight: 700;"><%= @equipment.name %></h2>
+          <p>Listed by <strong><%= @equipment.user.username %></strong></p>
 
-    <div class="equipment-description">
-      <h4><strong>€<%= @equipment.price %></strong> per day.</h4>
+          <h4><strong>€<%= @equipment.price %></strong> per day</h4>
 
-      <span style="color: grey"> #<%= @equipment.category %></span>
-      <p>Description: <%= @equipment.description %></p>
-      <%= link_to "Back", :back %>
-    </div>
+          <p>Description: <%= @equipment.description %></p>
+
+          <span style="color: grey"> #<%= @equipment.category %></span>
+        </div>
+
+        <div class="new-booking-container">
+          <%= render "bookings/new", equipment: @equipment, booking: @booking %>
+        </div>
+      </div>
 
 
-    <div class="new-booking-container">
-      <%= render "bookings/new", equipment: @equipment, booking: @booking %>
+      <!-- Right side -->
+      <div class="equipment-side">
+        <div class="equipment-images">
+          <% if @equipment.photos.attached?  %>
+            <% @equipment.photos.each do |photo|  %>
+              <%= cl_image_tag photo.key %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
