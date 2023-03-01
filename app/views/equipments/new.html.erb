@@ -4,6 +4,8 @@
       <%= simple_form_for @equipment, url: equipments_path do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
+        <%= f.input :price %>
+        <%= f.input :category, collection: Equipment::CATEGORY %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.submit "submit", class: 'btn btn-primary' %>
       <% end %>

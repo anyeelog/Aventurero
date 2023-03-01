@@ -17,7 +17,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.equipment = @equipment
     @booking.user = current_user
-    @booking.total_days = (@booking.end_date - @booking.start_date)
     @booking.total_price = ((@booking.end_date - @booking.start_date) * @equipment.price)
     @booking.save
 
