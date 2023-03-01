@@ -3,6 +3,11 @@
   background: white;
 }
 
+
+.navbar{
+  z-index: 999;
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }

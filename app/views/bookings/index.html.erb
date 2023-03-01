@@ -1,16 +1,22 @@
 <div class="container">
+<p><strong>Requested bookings</strong></p>
+<ul>
 <% @my_bookings.each do |booking| %>
 
-<p><%= booking.start_date %></p>
+<li><%= booking.start_date %> - <%= booking.end_date %>. Total price: <%= booking.total_price %>€ Status: <%= booking.status %>.</li>
+
 <% end %>
 
 </div>
 <%#=  each do to see all booking received %>
 <%#=  each do to see all booking submitted %>
-
+<div class="container">
+<p><strong>Received bookings</strong></p>
+<ul>
 <% @received_bookings.each do |booking| %>
 
 <p><%= booking.start_date %></p>
 <%= link_to "Confirm",  booking_path(booking, {status: "confirmed"}), data: {turbo_method: :patch} %>
 <%= link_to "Reject",  booking_path(booking, {status: "cancelled"}), data: {turbo_method: :patch} %>
 <% end %>
+</div>
