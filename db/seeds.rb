@@ -29,7 +29,8 @@ puts 'Creating 5 fake users with 5 fake equipments...'
       name: Faker::Superhero.name,
       category: ["tents", "ski", "caravans", "hiking", "surf"].sample,
       price: Faker::Number.decimal(l_digits: 2),
-      description: Faker::Lorem.paragraph
+      description: Faker::Lorem.paragraph,
+      address: Faker::Address.country
     )
     equipment.user = user
 
