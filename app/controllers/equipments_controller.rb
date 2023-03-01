@@ -15,6 +15,8 @@ class EquipmentsController < ApplicationController
   end
 
   def create
+    current_user = @user
+    current_user.address = @equipment.address
     @equipment = Equipment.new(equipment_params)
     @equipment.save
 
@@ -47,6 +49,6 @@ class EquipmentsController < ApplicationController
   private
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, photos: [])
+    params.require(:equipment).permit(:name, :description, :category, :user_id, photos: [])
   end
 end
