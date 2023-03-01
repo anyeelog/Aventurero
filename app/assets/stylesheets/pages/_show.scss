@@ -1,32 +1,76 @@
+.goback-button {
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.goback-button a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.goback-button a:hover {
+  text-decoration: underline;
+}
+
 .equipment-container {
-  background: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin: 50px 0 100px 0;
 }
 
-.equipment-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  align-items: flex-start
+.equipment-show {
+  display: flex;
+  justify-content: space-between;
 }
 
-.equipment-images {
-  align-items: center;
-}
-
-.equipment-images img {
-  max-height: 100%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+.equipment-side {
+  background-color: white;
   border-radius: 25px;
-}
-.equipment-description {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  max-width: 100%;
-  border-bottom: 1px solid rgb(227, 227, 227);
+  padding: 20px;
+  width: 65%;
+
+  .equipment-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: flex-start
+  }
+
+  .equipment-images {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .equipment-images img {
+    object-fit: cover;
+    margin-bottom: 20px;
+    max-width: 100%;
+    height: 400px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    border-radius: 25px;
+  }
+
+  .equipment-images img:last-child {
+    margin-bottom: 0;
+  }
 }
 
-.new-booking-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.equipment-show-right {
+  width: 30%;
+
+  .equipment-description {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 20px;
+    // border-bottom: 1px solid rgb(227, 227, 227);
+  }
+
+  .new-booking-container {
+    background-color: white;
+    height: fit-content;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 20px;
+  }
 }
