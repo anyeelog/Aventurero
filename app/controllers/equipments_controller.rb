@@ -15,12 +15,14 @@ class EquipmentsController < ApplicationController
   end
 
   def create
-    current_user = @user
-    current_user.address = @equipment.address
     @equipment = Equipment.new(equipment_params)
-    @equipment.save
+    @equipment.user = current_user
 
-    redirect_to new_equipment_path(@equipment)
+    if @equipment.save
+      redirect_to equipment_path(@equipment)
+    else
+      render 'new', status: :unprocessable_entity
+    end
   end
 
   def show
@@ -49,6 +51,6 @@ class EquipmentsController < ApplicationController
   private
 
   def equipment_params
-    params.require(:equipment).permit(:name, :description, :category, :user_id, photos: [])
+    params.require(:equipment).permit(:name, :description, :address, :price, :category, photos: [])
   end
 end
