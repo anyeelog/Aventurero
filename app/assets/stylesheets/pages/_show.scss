@@ -1,3 +1,5 @@
+/* Buttons/links styling */
+
 .equipment-buttons {
   margin-bottom: 25px;
 }
@@ -37,6 +39,39 @@
   justify-content: space-between;
 }
 
+
+/* Left side*/
+
+.equipment-show-right {
+  width: 30%;
+  position: sticky;
+  align-self: flex-start;
+  z-index: -1;
+  top: 100px;
+
+  .equipment-description {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 20px;
+    // border-bottom: 1px solid rgb(227, 227, 227);
+  }
+
+  .new-booking-container {
+    background-color: white;
+    height: fit-content;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Right side */
+
 .equipment-side {
   background-color: white;
   border-radius: 25px;
@@ -66,28 +101,5 @@
 
   .equipment-images img:last-child {
     margin-bottom: 0;
-  }
-}
-
-.equipment-show-right {
-  width: 30%;
-
-  .equipment-description {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    max-width: 100%;
-    background-color: white;
-    border-radius: 25px;
-    padding: 50px;
-    margin-bottom: 20px;
-    // border-bottom: 1px solid rgb(227, 227, 227);
-  }
-
-  .new-booking-container {
-    background-color: white;
-    height: fit-content;
-    border-radius: 25px;
-    padding: 50px;
-    margin-bottom: 20px;
   }
 }
