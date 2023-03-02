@@ -1,4 +1,5 @@
 class EquipmentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :update, :destroy]
   def index
     @equipments = Equipment.all
     @markers = @equipments.geocoded.map do |equipment|

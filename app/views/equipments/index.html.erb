@@ -2,7 +2,11 @@
   <div class="hero">
     <div class="hero-box-one">
       <h2>CATCH ADVENTURES, NOT FEELINGS</h2>
-      <%= link_to "Add equipment now", new_equipment_path, class: "hero-button" %>
+      <% if current_user %>
+        <%= link_to "Add equipment now", new_equipment_path, class: "hero-button" %>
+      <% else  %>
+        <%= link_to "Sign up now", new_user_registration_path, class: "hero-button" %>
+      <% end %>
     </div>
     <div class="hero-box-two"><p>Renting equipment for hiking, camping, and sports refers to the practice of temporarily leasing outdoor gear and equipment for recreational activities such as backpacking, camping, skiing, or snowboarding. Renting allows individuals to access specialized gear without the expense of purchasing and maintaining it themselves.</p>
 
