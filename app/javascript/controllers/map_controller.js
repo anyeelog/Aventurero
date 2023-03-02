@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
+  static targets = ["map"]
   static values = {
     apiKey: String,
     markers: Array
@@ -12,14 +13,16 @@ export default class extends Controller {
 
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.mapTarget,
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
 
-
+  resize() {
+    this.map.resize()
+  }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
@@ -36,4 +39,5 @@ export default class extends Controller {
         .addTo(this.map)
     });
   }
+
 }

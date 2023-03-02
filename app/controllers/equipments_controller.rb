@@ -34,6 +34,11 @@ class EquipmentsController < ApplicationController
   def show
     @equipment = Equipment.find(params[:id])
     @booking = Booking.new
+    @markers = [{
+      lat: @equipment.latitude,
+      lng: @equipment.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {equipment: @equipment})
+    }]
   end
 
   def edit

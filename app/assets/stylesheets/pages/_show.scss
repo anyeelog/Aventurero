@@ -91,3 +91,21 @@
     margin-bottom: 20px;
   }
 }
+
+.address{
+  margin-top: 20px;
+  margin-left: 70px;
+}
+
+.show-button {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 20px;
+  background-color: #FFC65A;
+  align-self: flex-end;
+  position: fixed;
+  bottom: 20px;
+  left: 45%;
+  z-index: 10;
+}
