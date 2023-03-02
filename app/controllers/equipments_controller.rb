@@ -1,11 +1,16 @@
 class EquipmentsController < ApplicationController
   def index
-    @equipments = Equipment.all
+    if params[:query].present?
+      @equipments = Equipment.search_equipment(params[:query])
+    else
+      @equipments = Equipment.all
+    end
+
     @markers = @equipments.geocoded.map do |equipment|
       {
         lat: equipment.latitude,
         lng: equipment.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {equipment: equipment})
+        info_window_html: render_to_string(partial: "info_window", locals: { equipment: equipment })
       }
     end
   end
