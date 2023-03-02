@@ -1,11 +1,17 @@
 class EquipmentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :update, :destroy]
   def index
-    @equipments = Equipment.all
+    if params[:query].present?
+      @equipments = Equipment.search_equipment(params[:query])
+    else
+      @equipments = Equipment.all
+    end
+
     @markers = @equipments.geocoded.map do |equipment|
       {
         lat: equipment.latitude,
         lng: equipment.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {equipment: equipment})
+        info_window_html: render_to_string(partial: "info_window", locals: { equipment: equipment })
       }
     end
   end
@@ -49,7 +55,9 @@ class EquipmentsController < ApplicationController
   end
 
   def destroy
+    @equipment = Equipment.find(params[:id])
     @equipment.destroy
+
     redirect_to equipments_path, status: :see_other
   end
 

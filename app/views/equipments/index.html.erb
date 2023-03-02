@@ -1,13 +1,17 @@
-<div class="container">
-  <div class="hero">
-    <div class="hero-box-one">
-      <h2>CATCH ADVENTURES, NOT FEELINGS</h2>
-      <%= link_to "Add equipment now", new_equipment_path, class: "hero-button" %>
-    </div>
-    <div class="hero-box-two"><p>Renting equipment for hiking, camping, and sports refers to the practice of temporarily leasing outdoor gear and equipment for recreational activities such as backpacking, camping, skiing, or snowboarding. Renting allows individuals to access specialized gear without the expense of purchasing and maintaining it themselves.</p>
 
-    <p><i class="fa-solid fa-heart"></i>&nbsp; With love, from <strong>ToGo</strong> team</p></div>
+<% unless params[:query].present? %>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-box-one">
+        <h2>CATCH ADVENTURES, NOT FEELINGS</h2>
+        <%= link_to "Add equipment now", new_equipment_path, class: "hero-button" %>
+      </div>
+      <div class="hero-box-two"><p>Renting equipment for hiking, camping, and sports refers to the practice of temporarily leasing outdoor gear and equipment for recreational activities such as backpacking, camping, skiing, or snowboarding. Renting allows individuals to access specialized gear without the expense of purchasing and maintaining it themselves.</p>
+
+      <p><i class="fa-solid fa-heart"></i>&nbsp; With love, from <strong>ToGo</strong> team</p></div>
+    </div>
   </div>
+
 </div>
 <div data-controller = "toggle_map map"
     data-map-markers-value="<%= @markers.to_json %>"
@@ -17,6 +21,18 @@
   <div class="container">
     <h2 style="margin-top: 150px;margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
 
+<% end %>
+
+
+<div class="container">
+    <%= render "shared/iconmenu" %>
+
+
+<% unless params[:query].present? %>
+  <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+<% else %>
+    <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+<% end %>
 
       <div class="equipment-cards equipments-container" data-toggle_map-target="cards">
         <% @equipments.each do |equipment| %>
