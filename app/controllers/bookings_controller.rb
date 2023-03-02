@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
- #comment
+
   def index
     @my_bookings = Booking.all.where(user_id: current_user.id)
     @received_bookings = current_user.received_bookings
-      @pending_bookings = current_user.received_bookings.where(status: "pending")
+    @pending_bookings = current_user.received_bookings.where(status: "pending")
   end
 
   def new
