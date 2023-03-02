@@ -1,4 +1,5 @@
 class EquipmentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :update, :destroy]
   def index
     if params[:query].present?
       @equipments = Equipment.search_equipment(params[:query])
