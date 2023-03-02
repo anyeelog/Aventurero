@@ -1,14 +1,20 @@
-<div class="equipment-container">
-  <div class="container">
-    <h2>Add equipment</h2>
-      <%= simple_form_for @equipment, url: equipments_path do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :address %>
-        <%= f.input :price %>
-        <%= f.input :category, collection: Equipment::CATEGORY %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.submit "Submit", class: 'btn btn-primary' %>
-      <% end %>
+<div class="most-supreme-form-container">
+  <div class="supreme-form-container">
+    <div class="container">
+
+      <div class="form-container">
+        <h2>Add equipment</h2>
+          <%= simple_form_for @equipment, url: equipments_path do |f| %>
+            <%= f.input :name %>
+            <%= f.input :description %>
+            <%= f.input :address %>
+            <%= f.input :price %>
+            <%= f.input :category, collection: Equipment::CATEGORY %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+            <%= f.submit "Submit", class: 'button' %>
+          <% end %>
+      </div>
+
+    </div>
   </div>
 </div>
