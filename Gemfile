@@ -51,9 +51,6 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-gem "devise"
-gem 'faker'
-
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -84,3 +81,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+
+# Gems we added for the project
+gem "devise" # for user login/logout
+gem 'faker' # for fake seeds
+gem "pg_search" # for searchers
