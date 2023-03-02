@@ -50,7 +50,9 @@ class EquipmentsController < ApplicationController
   end
 
   def destroy
+    @equipment = Equipment.find(params[:id])
     @equipment.destroy
+
     redirect_to equipments_path, status: :see_other
   end
 
