@@ -15,9 +15,10 @@
 
 
 <div class="container">
+    <%= render "shared/iconmenu" %>
 
 <% unless params[:query].present? %>
-  <h2 id="available-equipment" style="margin-top: 150px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+  <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
 <% else %>
     <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
 <% end %>
