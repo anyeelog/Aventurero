@@ -53,7 +53,16 @@
             <% end %>
           <% end %>
         </div>
+
+
       </div>
     </div>
+    <hr>
+    <h2>Where i live?</h2>
+    <div class="map-side" style="width: 100%; height: 500px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+    <p style="margin-left: 70px; margin-top: 20px"><%= @equipment.address %></p>
 </div>

@@ -11,46 +11,58 @@
       <p><i class="fa-solid fa-heart"></i>&nbsp; With love, from <strong>ToGo</strong> team</p></div>
     </div>
   </div>
+
+</div>
+<div data-controller = "toggle_map map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <button data-action="click->toggle_map#toggle click->map#resize" class="show-button">show map</button>
+
+  <div class="container">
+    <h2 style="margin-top: 150px;margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+
 <% end %>
 
 
 <div class="container">
+    <%= render "shared/iconmenu" %>
+
 
 <% unless params[:query].present? %>
-  <h2 id="available-equipment" style="margin-top: 150px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+  <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
 <% else %>
     <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
 <% end %>
 
-    <div class="equipment-cards equipments-container">
-      <% @equipments.each do |equipment| %>
-        <%= link_to equipment_path(equipment) do %>
-          <div class="equipment-card">
-            <div class="equipment-card-img" style="background-image: url('<%= cl_image_path equipment.photos.first.key %>')">
-            </div>
-
-            <div class="equipment-card-info">
-              <!-- <div class="d-flex align-items-center">
-                <div class="card-info-username-img"></div>
-                <strong><%= equipment.user.username %></strong>
-              </div> -->
-
-              <div class="w-100 d-flex justify-content-between align-items-center">
-                <div><h3><%= equipment.name %></h3></div>
-                <div><h3><%= equipment.price %>€</h3></div>
+      <div class="equipment-cards equipments-container" data-toggle_map-target="cards">
+        <% @equipments.each do |equipment| %>
+          <%= link_to equipment_path(equipment) do %>
+            <div class="equipment-card">
+              <div class="equipment-card-img" style="background-image: url('<%= cl_image_path equipment.photos.first.key %>')">
               </div>
 
-              <div style="margin-top:10px;"><%= equipment.description %></div>
+              <div class="equipment-card-info">
+                <!-- <div class="d-flex align-items-center">
+                  <div class="card-info-username-img"></div>
+                  <strong><%= equipment.user.username %></strong>
+                </div> -->
 
-              <div class="equipment-card-category">#<%= equipment.category %></div>
+                <div class="w-100 d-flex justify-content-between align-items-center">
+                  <div><h3><%= equipment.name %></h3></div>
+                  <div><h3><%= equipment.price %>€</h3></div>
+                </div>
 
+                <div style="margin-top:10px;"><%= equipment.description %></div>
+
+                <div class="equipment-card-category">#<%= equipment.category %></div>
+
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+
+  </div>
+  <div id="map" style="visibility: hidden; width: 100%; height:0;" data-map-target="map" data-toggle_map-target="map">
+  </div>
 </div>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

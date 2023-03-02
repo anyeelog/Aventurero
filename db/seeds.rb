@@ -186,7 +186,7 @@ puts 'Finished!'
    Booking.create!(
     start_date: Date.today,
     user_id: user1.id,
-    equipment_id: Equipment.first.id,
+    equipment_id: Equipment.last.id,
     end_date: Date.today + 3,
     total_price: 100
   )
