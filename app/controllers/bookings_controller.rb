@@ -24,6 +24,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status: params[:status])
+    redirect_to user_path(current_user)
     #get params sent by booking index and update status of booking accordingly
   end
 
