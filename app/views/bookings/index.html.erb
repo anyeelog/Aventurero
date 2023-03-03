@@ -1,7 +1,7 @@
 <div class="container">
 <div class="container-booking" style="height: 40vw;">
 <br>
-<div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
+<div class="goback-button"><%= link_to "← Go back", :back %></div>
 <% unless @my_bookings.nil? %>
   <h4>Requested bookings</h4>
   <ul class="list-inline">
@@ -14,11 +14,11 @@
         <%= booking.start_date %> - <%= booking.end_date %>. <br>
         Total price: <%= booking.total_price %>€ <br>
         Status:
-        <% if booking.status = "pending" %>
+        <% if booking.status == "pending" %>
           <span style = "color:#D3713C"><strong><%= booking.status %></strong></span>.</li>
-        <% elsif booking.status = "confirmed" %>
+        <% elsif booking.status == "confirmed" %>
           <span style = "color:#2B5242"><strong><%= booking.status %></strong></span>.</li>
-        <% elsif booking.status = "cancelled" %>
+        <% elsif booking.status == "cancelled" %>
           <span style = "color:#A33407"><strong><%= booking.status %></strong></span>.</li>
         <% end %>
       </div>
