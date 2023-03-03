@@ -1,62 +1,82 @@
-<div class="profile-container" >
-    <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
-  <div class = "container d-flex justify-content-between">
+<% require 'date' %>
 
+<div class="profile-container" >
+  <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
+
+    <div class = "container d-flex justify-content-between">
       <div class = "profile-show">
         <!-- Left side -->
         <div class = "profile-right">
-            <div class = "profile-description">
-              <h2 style="font-weight: 700;">Agent Wolverine III</h2>
-              <% unless current_user.photo.key.nil? %>
-                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <% else %>
+          <div class = "profile-description">
+            <h2 style="font-weight: 700;">My Profile</h2>
+            <% unless current_user.photo.key.nil? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
               <%= image_tag "user", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <% end %>
-              <p><strong>fairy_gusikowski</strong></p>
+            <% end %>
+           <p> <%= current_user.username %> </p>
+            <p> Member since: <%= current_user.created_at.to_datetime %> </p>
+          </div>
+
+          <div class="order-container">
+            <div class = "order-description">
+              <h2 style="font-weight: 700;">Order History</h2>
+              <%= link_to "See all", bookings_path%>
+              <p>Order 1. <strong>Another tent</strong></p>
+              <p>Order 2. <strong>Best tent</strong></p>
+              <p>Order 3. <strong>Best tent ever</strong></p>
               <p>Description: Omnis molestias fugiat. Saepe rerum asperiores. Et numquam rem.</p>
             </div>
-
-            <div class="order-container">
-                <div class = "order-description">
-                    <h2 style="font-weight: 700;">Order History</h2>
-                    <p><strong>current_user</strong></p>
-                    <p>Order 1. <strong>Another tent</strong></p>
-                    <p>Order 2. <strong>Best tent</strong></p>
-                    <p>Order 3. <strong>Best tent ever</strong></p>
-                    <p>Description: Omnis molestias fugiat. Saepe rerum asperiores. Et numquam rem.</p>
-                  </div>
-             </div>
+          </div>
         </div>
       </div>
-
 
       <div class="profile-side">
-              <!-- right side -->
-
+        <!-- right side -->
         <div class="profile-images">
-             <h2 style="font-weight: 700;">Bookings</h2>
-             <p><strong>Pendings</strong></p>
-                <div class="card-product">
-                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-                  <div class="d-flex justify-content-between w-100">
-                    <div class="card-product-infos">
-                       <p>Product booking <strong>status</strong> pending.</p>
-                    </div>
-                    <div class="d-flex">
-                      <%= button_to "#"%>
-                      <%= button_to "#" %>
-                    </div>
-                  </div>
+          <h2 style="font-weight: 700;">Bookings</h2>
 
-                </div>
-             <p><strong>Confirmed</strong></p>
+          <p><strong>Pendings</strong></p>
+          <% if @pending_bookings.empty? %>
+            <p>No bookings yet :(</p>
+          <% else %>
+            <% @pending_bookings.each do|booking| %>
               <div class="card-product">
-                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-                  <div class="card-product-infos">
-                    <p>Product booking <strong>status</strong> Confirmed</p>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <div class="d-flex justify-content-between w-100 card-product-infos">
+                  <div>
+                    <p>Product booking <strong>status</strong> <%=booking.status%> </p>
+                    <p> <%= booking.start_date %></p>
+                    <p> <%= booking.end_date %></p>
+                  </div>
+                  <div class="confirm-btn">
+                    <%= button_to "Confirm",  booking_path(booking, {status: "confirmed"}), method: :patch %>
+                   </div>
+                    <%#= button_to "Reject",  booking_path(booking, {status: "cancelled"}), method: :patch %>
                   </div>
                 </div>
+              </div>
+            <% end %>
+          <% end %>
+
+          <p><strong>Confirmed</strong></p>
+          <% @confirmed_bookings.each do|booking| %>
+            <div class="card-product">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="d-flex w-100 justify-content-between card-product-infos">
+                <div>
+                  <p>Product booking <strong>status</strong> <%=booking.status%> </p>
+                  <p> <%= booking.start_date %></p>
+                  <p> <%= booking.end_date %></p>
+                </div>
+                <div class="reject-btn">
+                  <%= button_to "Reject",  booking_path(booking, {status: "cancelled"}), method: :patch %>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
+    </div>
   </div>
 </div>

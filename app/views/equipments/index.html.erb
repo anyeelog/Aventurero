@@ -1,4 +1,3 @@
-
 <% unless params[:query].present? %>
   <div class="container">
     <div class="hero">
@@ -16,29 +15,47 @@
 <div data-controller = "toggle_map map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  <button data-action="click->toggle_map#toggle click->map#resize" class="show-button">show map</button>
+  <button data-action="click->toggle_map#toggle click->map#resize" class="show-button" style="box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);">show map</button>
 
   <div class="container">
-    <h2 style="margin-top: 150px;margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
 
 <% end %>
 
 
-<div class="container">
-    <%= render "shared/iconmenu" %>
+<div class="container" >
+    <div style="margin-top: 50px;"><%= render "shared/iconmenu" %></div>
 
 
 <% unless params[:query].present? %>
-  <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
-<% else %>
-    <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
-<% end %>
-
+    <div><h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+</div><% end %>
       <div class="equipment-cards equipments-container" data-toggle_map-target="cards">
         <% @equipments.each do |equipment| %>
           <%= link_to equipment_path(equipment) do %>
             <div class="equipment-card">
-              <div class="equipment-card-img" style="background-image: url('<%= cl_image_path equipment.photos.first.key %>')">
+              <div class="equipment-card-img">
+              <div id="carouselExampleControls<%= equipment.id %>" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%= cl_image_tag equipment.photos.first.key, height: '200px', width:'300px'%>
+                    </div>
+                    <% equipment.photos[1..].each do |photo| %>
+                    <%# next if photo == equipment.photos[0] %>
+                      <div class="carousel-item">
+                        <%= cl_image_tag photo.key, height: '200px', width:'300px'%>
+                      </div>
+                    <% end %>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<%= equipment.id %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<%= equipment.id %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+
               </div>
 
               <div class="equipment-card-info">
@@ -48,11 +65,11 @@
                 </div> -->
 
                 <div class="w-100 d-flex justify-content-between align-items-center">
-                  <div><h3><%= equipment.name %></h3></div>
-                  <div><h3><%= equipment.price %>€</h3></div>
+                  <div><h4><%#= equipment.name %><td><%= equipment.name.length > 25 ? "#{equipment.name[0..22]}..." : equipment.name %></td></h4></div>
+                  <div><h5><%= equipment.price %>€/day</h5></div>
                 </div>
 
-                <div style="margin-top:10px;"><%= equipment.description %></div>
+                <div style="margin-top:10px;"><%#= equipment.description %><td><%= equipment.description.length > 83 ? "#{equipment.description[0..80]}..." : equipment.description %></td></div>
 
                 <div class="equipment-card-category">#<%= equipment.category %></div>
 

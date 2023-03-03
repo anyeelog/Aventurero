@@ -1,5 +1,7 @@
 class Equipment < ApplicationRecord
   CATEGORY = ["tents", "ski", "caravans", "hiking", "surf"]
+  before_create :capitalize
+
   has_many_attached :photos
   belongs_to :user
   has_many :bookings
@@ -15,4 +17,10 @@ class Equipment < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  private
+    def capitalize
+      self.name = self.name.downcase
+      self.name = self.name.capitalize!
+    end
 end
