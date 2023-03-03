@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   def index
     @my_bookings = Booking.all.where(user_id: current_user.id)
     @received_bookings = current_user.received_bookings
-      @pending_bookings = current_user.received_bookings.where(status: "pending")
+    @pending_bookings = current_user.received_bookings.where(status: "pending")
   end
 
   def new
@@ -24,6 +24,9 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = Booking.find(params[:id])
+    @booking.update(status: params[:status])
+    redirect_to user_path(current_user)
     #get params sent by booking index and update status of booking accordingly
   end
 
