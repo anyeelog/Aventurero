@@ -33,9 +33,9 @@
       <div class="profile-side">
         <!-- right side -->
         <div class="profile-images">
-          <h2 style="font-weight: 700;">Bookings</h2>
+          <h2 style="font-weight: 700;">Received bookings</h2>
 
-          <p><strong>Pendings</strong></p>
+          <p><strong>Pending</strong></p>
           <% if @pending_bookings.empty? %>
             <p>No bookings yet :(</p>
           <% else %>
@@ -44,9 +44,10 @@
                   <%= cl_image_tag booking.equipment.photos.first.key %>
                 <div class="d-flex justify-content-between w-100 card-product-infos">
                   <div>
-                    <p>Product booking <strong>status</strong> <%=booking.status%> </p>
-                    <p> <%= booking.start_date %></p>
-                    <p> <%= booking.end_date %></p>
+                  <p><%= booking.equipment.name %> <strong>status</strong> <%=booking.status%> </p>
+                  <p><strong>Dates: </strong><%= booking.start_date %> to <%= booking.end_date %></p>
+                  <p><strong>Total price: </strong><%= booking.total_price %>€ </p>
+                  <p><strong>Requested by: </strong><%= booking.user.username %> </p>
                   </div>
 
                   <div class="d-flex align-items-center">
@@ -70,7 +71,7 @@
               <div class="d-flex w-100 justify-content-between card-product-infos">
                 <div>
                   <p><%= booking.equipment.name %> <strong>status</strong> <%=booking.status%> </p>
-                  <p> <%= booking.start_date %> to <%= booking.end_date %></p>
+                  <p><%= booking.start_date %> to <%= booking.end_date %></p>
                   <p><strong>Total price: </strong><%= booking.total_price %>€ </p>
                   <p><strong>Requested by: </strong><%= booking.user.username %> </p>
 
