@@ -6,9 +6,13 @@ export default class extends Controller {
 
   console.log("hello")
 
-
   }
   toggle(event){
+   const header = document.getElementById("available-equipment")
+   if (header != undefined) {
+     header.classList.toggle("d-none")
+   }
+
    console.log(event.currentTarget)
     if (this.mapTarget.style.visibility === "hidden"){
       this.mapTarget.style.visibility = "visible"
