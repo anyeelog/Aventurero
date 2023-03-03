@@ -1,3 +1,5 @@
+<% require 'date' %>
+
 <div class="profile-container" >
   <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
 
@@ -6,14 +8,14 @@
         <!-- Left side -->
         <div class = "profile-right">
           <div class = "profile-description">
-            <h2 style="font-weight: 700;">Agent Wolverine III</h2>
+            <h2 style="font-weight: 700;">My Profile</h2>
             <% unless current_user.photo.key.nil? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
               <%= image_tag "user", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
            <p> <%= current_user.username %> </p>
-            <p>Description: Omnis molestias fugiat. Saepe rerum asperiores. Et numquam rem.</p>
+            <p> Member since: <%= current_user.created_at.to_datetime %> </p>
           </div>
 
           <div class="order-container">

@@ -85,3 +85,40 @@ body {
   text-decoration: none;
 
 }
+
+.submittedbooking-card {
+  overflow: hidden;
+  height: 120px;
+  width: 600px;
+  background: white;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.submittedbooking-card-text a {
+  text-decoration: none;
+}
+
+.submittedbooking-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.submittedbooking-card-text {
+  padding-left: 25px;
+}
+.submittedbooking-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.submittedbooking-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
