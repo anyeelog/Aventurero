@@ -40,12 +40,12 @@ puts 'Creating fake users with fake equipments...'
       price: Faker::Number.decimal(l_digits: 2),
       description: "Used but good condition
       Just look at the photo
-      The information is there for the size. Stunning mustard colour",
+      The information is there for the size. Stunning camo pattern",
       address: Faker::Address.country)
       equipment.save
-      file = URI.open("https://funwithmum.com/media/catalog/product/cache/08e721dcd64acb638152146ea5dd04b2/2/0/2020-08-25_flawless0248.jpg")
+      file = URI.open("https://i.ebayimg.com/images/g/~YoAAOSw3PpeqDpb/s-l1600.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
-      file = URI.open("https://funwithmum.com/media/catalog/product/cache/08e721dcd64acb638152146ea5dd04b2/f/u/funwithmum103_1.jpg")
+      file = URI.open("https://i.ebayimg.com/images/g/RwQAAOSw44piCWKv/s-l1600.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
 
     equipment.user = user1
@@ -66,6 +66,21 @@ puts 'Creating fake users with fake equipments...'
     equipment.user = user1
     equipment.save!
 
+    equipment = Equipment.new(
+      name: "HOBBY 700 ISLAND BED TWIN AXLE 2005 Caravan",
+      category: "caravans",
+      price: Faker::Number.decimal(l_digits: 2),
+      description: "U shaped lounge to the rear that converts into a king size bed. Full central kitch with oven, grill on the hob, plenty of benchspace. Full washroom. ",
+      address: Faker::Address.country)
+      equipment.save
+      file = URI.open("https://i.ebayimg.com/images/g/SVUAAOSw1gljjSR-/s-l500.jpg")
+      equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
+      file = URI.open("https://i.ebayimg.com/images/g/FjkAAOSwHQljjSR7/s-l1600.jpg")
+      equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
+
+    equipment.user = user1
+    equipment.save!
+
     user2 = User.new(
       username: "DwightS68",
       address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
@@ -77,14 +92,14 @@ puts 'Creating fake users with fake equipments...'
 
     equipment = Equipment.new(
       name: "Inflatable Camping Mattress",
-      category: "caravans",
+      category: "hiking",
       price: Faker::Number.decimal(l_digits: 2),
       description: "Extra thick Ultim Comfort self-inflating mattress for those campers who want the comfort of their own home.",
       address: Faker::Address.country)
       equipment.save
-      file = URI.open("https://contents.mediadecathlon.com/p2337517/k$d7ef1f2362d84faa15e532aa93caec25/sq/inflatable-camping-mattress-ultim-comfort-70-cm-1-person.jpg?format=auto&f=646x646")
+      file = URI.open("https://i.ebayimg.com/images/g/aj8AAOSwzgJi5eUO/s-l500.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
-      file = URI.open("https://contents.mediadecathlon.com/p2254622/k$380db1536d92969c4a9d8d6486609187/sq/inflatable-camping-mattress-ultim-comfort-70-cm-1-person.jpg?format=auto&f=969x969")
+      file = URI.open("https://i.ebayimg.com/images/g/ubgAAOSw6zpi5eUs/s-l500.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
     equipment.user = user2
     equipment.save!
@@ -96,7 +111,7 @@ puts 'Creating fake users with fake equipments...'
       description: "The woods are dark and full of bears —or, at least, blisters, splinters, biting bugs, and more. Rent this hiking first-aid kit.",
       address: Faker::Address.country)
       equipment.save
-      file = URI.open("https://www.barrabes.com/images/tienda/products/large/45737.jpg")
+      file = URI.open("https://www.thehikingsociety.com.au/wp-content/uploads/2021/08/AdobeStock_36957360-scaled.jpeg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
       file = URI.open("https://cdn.thewirecutter.com/wp-content/uploads/2017/09/wilderness-first-aid-kit-lowres-4952.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
@@ -114,15 +129,15 @@ puts 'Creating fake users with fake equipments...'
     user3.save!
 
     equipment = Equipment.new(
-      name: "3 person pop-up tent",
+      name: "Three person pop-up tent",
       category: "tents",
       price: Faker::Number.decimal(l_digits: 2),
       description: "Three-person tent so that you can pitch it in a few minutes. It offers guaranteed mobility",
       address: Faker::Address.country)
       equipment.save
-      file = URI.open("https://contents.mediadecathlon.com/p2318084/k$3547c9cbc231ed95839139842fa1bf6b/sq/3-person-blackout-pop-up-tent-2-seconds-xl-fresh-and-black.jpg?format=auto&f=646x646")
+      file = URI.open("https://www.canvascamp.com/media/catalog/product/cache/b884b12e351bcd1c36416cc09494ec90/s/i/sibley_300_ultimate_interior_window.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
-      file = URI.open("https://contents.mediadecathlon.com/p1259815/k$2afaeaa85bd405b6c16ad070081d2965/sq/3-person-blackout-pop-up-tent-2-seconds-xl-fresh-and-black.jpg?format=auto&f=646x646")
+      file = URI.open("https://www.canvascamp.com/media/catalog/product/cache/b884b12e351bcd1c36416cc09494ec90/s/i/sibley_300_ultimate_meadow_woman_camper.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
     equipment.user = user3
     equipment.save!
@@ -134,9 +149,24 @@ puts 'Creating fake users with fake equipments...'
       description: "Carry your baby when hiking while protecting thks to the built-in sunshade",
       address: Faker::Address.country)
       equipment.save
-      file = URI.open("https://contents.mediadecathlon.com/p2130350/k$6be5b456930eff4213e7550e38a08cb6/sq/rigid-baby-carrier-deuter-kid-comfort.jpg?format=auto&f=646x646")
+      file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSqN9ZI5c4w5KORp7NVhcJ_CGreOe7im7GtZTvsOtGaiZOtpWSxfyK02Khi01Tnrqfu3g&usqp=CAU")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
-      file = URI.open("https://contents.mediadecathlon.com/p2130359/k$32b6bf30c7bec4e8c8d3a3bb3de147d4/sq/rigid-baby-carrier-deuter-kid-comfort.jpg?format=auto&f=646x646")
+      file = URI.open("https://www.outsideonline.com/wp-content/uploads/2019/01/11/baby-carrier-dad_s.jpg")
+      equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
+
+    equipment.user = user3
+    equipment.save!
+
+    equipment = Equipment.new(
+      name: "Vintage surfboard",
+      category: "surf",
+      price: Faker::Number.decimal(l_digits: 2),
+      description: "Vintage and collector surfboards aren’t always easy to find and ones in good condition (like this one!) certainly aren’t cheap",
+      address: Faker::Address.country)
+      equipment.save
+      file = URI.open("https://www.secondhandboards.com/slir/c390x540/https://www.secondhandboards.com/boardimages/img-16150379783.jpg")
+      equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
+      file = URI.open("https://www.secondhandboards.com/slir/c390x540/https://www.secondhandboards.com/boardimages/img-16150377104.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
 
     equipment.user = user3
@@ -159,9 +189,9 @@ puts 'Creating fake users with fake equipments...'
       description: "Adjustment wheel for the head size and a highly protective outer shell made of ABS.",
       address: Faker::Address.country)
       equipment.save
-      file = URI.open("https://contents.mediadecathlon.com/p1177745/k$c586586b7a1965ad8584f26d5d9754bf/sq/adult-d-ski-helmet-h100-grey.jpg?format=auto&f=969x969")
+      file = URI.open("https://images.boardriders.com/globalGrey/roxy-products/all/default/large/erjtl03056_roxy,l_kvj0_frt1.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{1}.png", content_type: "image/png")
-      file = URI.open("https://contents.mediadecathlon.com/p1177731/k$7c555722c16dcd91cedd4aa1c6853094/sq/adult-d-ski-helmet-h100-grey.jpg?format=auto&f=969x969")
+      file = URI.open("https://images.boardriders.com/globalGrey/roxy-products/all/default/xlarge/erjtl03056_roxy,l_kvj0_frt3.jpg")
       equipment.photos.attach(io: file, filename: "#{equipment.name}#{2}.png", content_type: "image/png")
 
     equipment.user = user4

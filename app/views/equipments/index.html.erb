@@ -48,11 +48,11 @@
                 </div> -->
 
                 <div class="w-100 d-flex justify-content-between align-items-center">
-                  <div><h3><%= equipment.name %></h3></div>
-                  <div><h3><%= equipment.price %>€</h3></div>
+                  <div><h4><%#= equipment.name %><td><%= equipment.name.length > 25 ? "#{equipment.name[0..22]}..." : equipment.name %></td></h4></div>
+                  <div><h5><%= equipment.price %>€/day</h5></div>
                 </div>
 
-                <div style="margin-top:10px;"><%= equipment.description %></div>
+                <div style="margin-top:10px;"><%#= equipment.description %><td><%= equipment.description.length > 83 ? "#{equipment.description[0..80]}..." : equipment.description %></td></div>
 
                 <div class="equipment-card-category">#<%= equipment.category %></div>
 
