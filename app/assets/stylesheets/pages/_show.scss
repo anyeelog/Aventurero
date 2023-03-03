@@ -161,3 +161,20 @@
   border-radius: 30px;
 }
 
+
+
+.booking-form-show {
+  input[type=submit] {
+    background-color: $green;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 20px;
+    margin-top: 30px;
+    font-weight: 600;
+  }
+
+  abbr {
+    display: none;
+  }
+}
