@@ -41,6 +41,7 @@
             <% @pending_bookings.each do|booking| %>
               <div class="card-product">
                 <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                  <%= cl_image_tag booking.equipment.photos.first.key %>
                 <div class="d-flex justify-content-between w-100 card-product-infos">
                   <div>
                     <p>Product booking <strong>status</strong> <%=booking.status%> </p>
