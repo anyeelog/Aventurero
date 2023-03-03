@@ -1,6 +1,31 @@
-<div class="equipment-container">
+<div class="equipment-container"
+     data-controller="map"
+     data-map-markers-value="<%= @markers.to_json %>"
+     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   <div class="container">
-    <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
+    <div class="equipment-buttons d-flex justify-content-between">
+      <div class="goback-button">
+        <%= link_to equipments_path do %>
+          <i class="fa-solid fa-arrow-left" style="margin-right: 5px"></i>
+          Go back
+        <% end %>
+
+      </div>
+
+      <% if @equipment.user == current_user %>
+        <div class="equipment-edit-buttons d-flex">
+          <%= link_to edit_equipment_path(@equipment) do %>
+            <i class="fa-solid fa-pen" style="margin-right: 5px"></i>
+            Edit equipment
+          <% end %>
+
+          <%= button_to equipment_path(@equipment), method: :delete, data: {turbolinks: false, confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash" style="margin-right: 5px"></i>
+            Delete equipment
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
     <div class="equipment-show">
       <!-- Left side -->
@@ -30,7 +55,13 @@
             <% end %>
           <% end %>
         </div>
+
+
       </div>
     </div>
+    <hr>
+    <h2>Where i live?</h2>
+    <div class="map-side" style="width: 100%; height: 500px;" data-map-target="map"></div>
   </div>
+    <p style="margin-left: 70px; margin-top: 20px"><%= @equipment.address %></p>
 </div>

@@ -1,14 +1,32 @@
-.goback-button {
+/* Buttons/links styling */
+
+.equipment-buttons {
   margin-bottom: 25px;
+}
+
+.equipment-edit-buttons button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: $blue;
+}
+
+.goback-button a, .equipment-edit-buttons a {
+  text-decoration: none;
+  font-size: 16px;
   font-weight: bold;
 }
 
-.goback-button a {
-  text-decoration: none;
-  font-size: 18px;
+.equipment-edit-buttons a {
+  margin-right: 15px;
 }
 
-.goback-button a:hover {
+.equipment-edit-buttons a:last-child {
+  margin-right: 0;
+}
+
+.goback-button a:hover, .equipment-edit-buttons a:hover, .equipment-edit-buttons button:hover {
   text-decoration: underline;
 }
 
@@ -21,11 +39,45 @@
   justify-content: space-between;
 }
 
+
+/* Left side*/
+
+.equipment-show-right {
+  width: 30%;
+  position: sticky;
+  align-self: flex-start;
+  z-index: -1;
+  top: 100px;
+
+  .equipment-description {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 20px;
+    // border-bottom: 1px solid rgb(227, 227, 227);
+  }
+
+  .new-booking-container {
+    background-color: white;
+    height: fit-content;
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Right side */
+
 .equipment-side {
   background-color: white;
   border-radius: 25px;
   padding: 20px;
   width: 65%;
+  height: fit-content;
 
   .equipment-header {
     padding-top: 10px;
@@ -74,3 +126,22 @@
     margin-bottom: 20px;
   }
 }
+
+.address{
+  margin-top: 20px;
+  margin-left: 70px;
+}
+
+.show-button {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 20px;
+  background-color: #FFC65A;
+  align-self: flex-end;
+  position: fixed;
+  bottom: 20px;
+  left: 45%;
+  z-index: 10;
+}
+

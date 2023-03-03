@@ -1,48 +1,68 @@
-<div class="container">
-  <div class="hero">
-    <div class="hero-box-one">
-      <h2>CATCH ADVENTURES, NOT FEELINGS</h2>
-      <%= link_to "Add equipment now", new_equipment_path, class: "hero-button" %>
+
+<% unless params[:query].present? %>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-box-one">
+        <h2>CATCH ADVENTURES, NOT FEELINGS</h2>
+        <%= link_to "Add equipment now", new_equipment_path, class: "hero-button" %>
+      </div>
+      <div class="hero-box-two"><p>Renting equipment for hiking, camping, and sports refers to the practice of temporarily leasing outdoor gear and equipment for recreational activities such as backpacking, camping, skiing, or snowboarding. Renting allows individuals to access specialized gear without the expense of purchasing and maintaining it themselves.</p>
+
+      <p><i class="fa-solid fa-heart"></i>&nbsp; With love, from <strong>ToGo</strong> team</p></div>
     </div>
-    <div class="hero-box-two"><p>Renting equipment for hiking, camping, and sports refers to the practice of temporarily leasing outdoor gear and equipment for recreational activities such as backpacking, camping, skiing, or snowboarding. Renting allows individuals to access specialized gear without the expense of purchasing and maintaining it themselves.</p>
-
-    <p><i class="fa-solid fa-heart"></i>&nbsp; With love, from <strong>ToGo</strong> team</p></div>
   </div>
+
 </div>
+<div data-controller = "toggle_map map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <button data-action="click->toggle_map#toggle click->map#resize" class="show-button">show map</button>
+
+  <div class="container">
+    <h2 style="margin-top: 150px;margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+
+<% end %>
+
 
 <div class="container">
-  <h2 style="margin-top: 150px;margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+    <%= render "shared/iconmenu" %>
 
 
-    <div class="equipment-cards equipments-container">
-      <% @equipments.each do |equipment| %>
-        <%= link_to equipment_path(equipment) do %>
-          <div class="equipment-card">
-            <div class="equipment-card-img" style="background-image: url('<%= cl_image_path equipment.photos.first.key %>')">
-            </div>
+<% unless params[:query].present? %>
+  <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+<% else %>
+    <h2 id="available-equipment" style="margin-top: 50px; margin-bottom: 50px; font-size: 36px; font-weight: 700;">Available equipment</h2>
+<% end %>
 
-            <div class="equipment-card-info">
-              <!-- <div class="d-flex align-items-center">
-                <div class="card-info-username-img"></div>
-                <strong><%= equipment.user.username %></strong>
-              </div> -->
-
-              <div class="w-100 d-flex justify-content-between align-items-center">
-                <div><h3><%= equipment.name %></h3></div>
-                <div><h3><%= equipment.price %>€</h3></div>
+      <div class="equipment-cards equipments-container" data-toggle_map-target="cards">
+        <% @equipments.each do |equipment| %>
+          <%= link_to equipment_path(equipment) do %>
+            <div class="equipment-card">
+              <div class="equipment-card-img" style="background-image: url('<%= cl_image_path equipment.photos.first.key %>')">
               </div>
 
-              <div style="margin-top:10px;"><%= equipment.description %></div>
+              <div class="equipment-card-info">
+                <!-- <div class="d-flex align-items-center">
+                  <div class="card-info-username-img"></div>
+                  <strong><%= equipment.user.username %></strong>
+                </div> -->
 
-              <div class="equipment-card-category">#<%= equipment.category %></div>
+                <div class="w-100 d-flex justify-content-between align-items-center">
+                  <div><h4><%#= equipment.name %><td><%= equipment.name.length > 25 ? "#{equipment.name[0..22]}..." : equipment.name %></td></h4></div>
+                  <div><h5><%= equipment.price %>€/day</h5></div>
+                </div>
 
+                <div style="margin-top:10px;"><%#= equipment.description %><td><%= equipment.description.length > 83 ? "#{equipment.description[0..80]}..." : equipment.description %></td></div>
+
+                <div class="equipment-card-category">#<%= equipment.category %></div>
+
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+
+  </div>
+  <div id="map" style="visibility: hidden; width: 100%; height:0;" data-map-target="map" data-toggle_map-target="map">
+  </div>
 </div>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

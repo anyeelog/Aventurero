@@ -1,5 +1,5 @@
 <div>
-  <h4 class="mb-4" style="font-weight: 700;">Booking for <%= @equipment.name.capitalize %></h4>
+  <h4 class="mb-4" style="font-weight: 700;">Renting <%= @equipment.name %></h4>
   <%= simple_form_for [@equipment, @booking] do |f| %>
     <%= f.input :start_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
     <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
