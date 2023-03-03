@@ -34,8 +34,9 @@
             <%= image_tag "user", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "View profile", user_path(id: current_user.id), class: "dropdown-item" %>
               <%= link_to "Edit details", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Manage bookings", bookings_path, class: "dropdown-item" %>
+              <%= link_to "See my bookings", bookings_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>

@@ -3,14 +3,26 @@
 <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
 <% unless @my_bookings.nil? %>
   <h4>Requested bookings</h4>
-  <ol>
+  <ul class="list-inline">
     <% @my_bookings.each do |booking| %>
-
-    <li><strong><%= booking.equipment.name %></strong><br>
-    <%= booking.start_date %> - <%= booking.end_date %>. <br>
-    Total price: <%= booking.total_price %>€ <br>
-    Status: <%= booking.status %>.</li>
-
+      <%= link_to equipment_path(booking.equipment) do %>
+    <div class="submittedbooking-card">
+      <%= cl_image_tag booking.equipment.photos.first.key %>
+      <div class="submittedbooking-card-text">
+        <li><strong><%= booking.equipment.name %></strong><br>
+        <%= booking.start_date %> - <%= booking.end_date %>. <br>
+        Total price: <%= booking.total_price %>€ <br>
+        Status:
+        <% if booking.status = "pending" %>
+          <span style = "color:#D3713C"><strong><%= booking.status %></strong></span>.</li>
+        <% elsif booking.status = "confirmed" %>
+          <span style = "color:#2B5242"><strong><%= booking.status %></strong></span>.</li>
+        <% elsif booking.status = "cancelled" %>
+          <span style = "color:#A33407"><strong><%= booking.status %></strong></span>.</li>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <% end %>
 <% end %>
 </div>
