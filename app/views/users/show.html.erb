@@ -42,17 +42,22 @@
           <% else %>
             <% @pending_bookings.each do|booking| %>
               <div class="card-product">
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                  <%= cl_image_tag booking.equipment.photos.first.key %>
                 <div class="d-flex justify-content-between w-100 card-product-infos">
                   <div>
                     <p>Product booking <strong>status</strong> <%=booking.status%> </p>
                     <p> <%= booking.start_date %></p>
                     <p> <%= booking.end_date %></p>
                   </div>
-                  <div class="confirm-btn">
-                    <%= button_to "Confirm",  booking_path(booking, {status: "confirmed"}), method: :patch %>
-                   </div>
-                    <%#= button_to "Reject",  booking_path(booking, {status: "cancelled"}), method: :patch %>
+
+                  <div class="d-flex align-items-center">
+                    <div class="confirm-btn">
+                      <%= button_to "Confirm",  booking_path(booking, {status: "confirmed"}), method: :patch, data: {turbo_confirm: 'Are you sure?'} %>
+                    </div>
+
+                      <div class="reject-btn">
+                        <%= button_to "Reject",  booking_path(booking, {status: "cancelled"}), method: :patch, data: {turbo_confirm: 'Are you sure?'} %>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -62,15 +67,15 @@
           <p><strong>Confirmed</strong></p>
           <% @confirmed_bookings.each do|booking| %>
             <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <%= cl_image_tag booking.equipment.photos.first.key %>
               <div class="d-flex w-100 justify-content-between card-product-infos">
                 <div>
                   <p>Product booking <strong>status</strong> <%=booking.status%> </p>
                   <p> <%= booking.start_date %></p>
                   <p> <%= booking.end_date %></p>
                 </div>
-                <div class="reject-btn">
-                  <%= button_to "Reject",  booking_path(booking, {status: "cancelled"}), method: :patch %>
+                <div class="reject-btn d-flex">
+                  <%= button_to "Reject",  booking_path(booking, {status: "cancelled"}), method: :patch, data: {turbo_confirm: 'Are you sure?'} %>
                 </div>
               </div>
             </div>
