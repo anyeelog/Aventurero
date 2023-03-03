@@ -1,28 +1,43 @@
-<div class="equipment-container">
-  <div class="container">
-    <h2>Log in</h2>
+<div class="signup-fill d-flex">
+  <div class="most-supreme-form-container w-50">
+    <div class="d-flex flex-column w-100 justify-content-center align-items-center">
+      <h1>Welcome back! <br> Continue with your adventures</h1>
+      <%#= image_tag("logo.png", alt: "My Logo") %>
+    </div>
   </div>
 
-  <div class="container">
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div class="supreme-form-container w-50 m-auto">
+    <div class="container">
+      <div class="form-container">
+          <h2>Log in</h2>
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions d-flex align-items-center" style="margin-bottom: 10px;">
+              <%= f.button :submit, "Log in", class: "login-btn" %>
+
+              <span style="margin-left: 10px; margin-bottom: 10px;"> or
+                <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                <%= link_to "Sign up", new_registration_path(resource_name) %>
+                <% end %>
+              </span>
+            </div>
+
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Log in", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="container">
-    <%= render "devise/shared/links" %>
-  </div>
+    </div>
 </div>

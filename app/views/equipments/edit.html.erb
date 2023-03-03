@@ -1,12 +1,25 @@
-<div class = "back-button">
-  <%= link_to "Back", equipments_path%>
-</div>
+<div class="most-supreme-form-container signup-fill">
+  <div class="most-supreme-form-container">
+    <div class="supreme-form-container">
+      <div class="container">
+        <div class="goback-button">
+          <%= link_to equipments_path do %>
+            <i class="fa-solid fa-arrow-left" style="margin-right: 5px"></i>
+            Go back
+          <% end %>
+        </div>
 
-<div class= 'list'>
-  <%= simple_form_for @equipment do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%#= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
+        <div class="form-container m-auto">
+          <h2>Edit equipment</h2>
+
+          <%= simple_form_for @equipment do |f| %>
+            <%= f.input :name %>
+            <%= f.input :description %>
+            <%#= f.input :photos, as: :file, input_html: { multiple: true } %>
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
