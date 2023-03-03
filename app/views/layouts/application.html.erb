@@ -15,7 +15,15 @@
 
   <body>
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+
+      <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+        <span><strong><%= notice %></strong></span>
+        <a data-bs-dismiss="alert" aria-label="Close">
+          &nbsp;&nbsp;<i class="fas fa-times"></i>
+        </a>
+      </div>
+
+      <!-- <p class="notice"><%= notice %></p> -->
     <% end %>
 
     <% if alert %>
