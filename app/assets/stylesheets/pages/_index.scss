@@ -3,3 +3,40 @@
 @import "list";
 @import "equipments";
 @import "profile";
+
+/*
+.notice {
+  background-color: green;
+  margin-bottom: 0;
+  font-weight: bold;
+  padding: 5px;
+  color: white;
+}
+
+.alert {
+  background-color: $red;
+}
+*/
+
+.flash {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  margin: 8px;
+}
+
+.flash-success {
+  border: 2px solid $green;
+}
+
+.flash-warning {
+  border: 2px solid $yellow;
+}
+
+.flash-danger {
+  border: 2px solid $red;
+}
