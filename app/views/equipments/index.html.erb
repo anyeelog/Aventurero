@@ -33,16 +33,18 @@
         <% @equipments.each do |equipment| %>
           <%= link_to equipment_path(equipment) do %>
             <div class="equipment-card">
-              <div class="equipment-card-img">
+
+
+              <!-- Start of carrousel -->
               <div id="carouselExampleControls<%= equipment.id %>" class="carousel slide" data-bs-ride="false">
-                  <div class="carousel-inner">
+                  <div class="carousel-inner" style="border-radius: 25px;">
                   <div class="carousel-item active">
-                      <%= cl_image_tag equipment.photos.first.key, height: '200px', width:'400px', style: "object-fit: cover"%>
+                      <%= cl_image_tag equipment.photos.first.key, height: '250px', width:'100%', style: "object-fit: cover"%>
                     </div>
                     <% equipment.photos[1..].each do |photo| %>
                     <%# next if photo == equipment.photos[0] %>
                       <div class="carousel-item">
-                        <%= cl_image_tag photo.key, height: '200px', width:'300px'%>
+                        <%= cl_image_tag photo.key, height: '250px', width:'100%', style: "object-fit: cover"%>
                       </div>
                     <% end %>
                   </div>
@@ -54,9 +56,11 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                   </button>
-                </div>
+
 
               </div>
+
+              <!-- End of carrousel -->
 
               <div class="equipment-card-info">
                 <!-- <div class="d-flex align-items-center">
