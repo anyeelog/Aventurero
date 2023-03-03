@@ -1,5 +1,4 @@
-<% require 'date' %>
-
+<div class="container">
 <div class="profile-container" >
   <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
 
@@ -10,22 +9,21 @@
           <div class = "profile-description">
             <h2 style="font-weight: 700;">My Profile</h2>
             <% unless current_user.photo.key.nil? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar-large"%>
             <% else %>
-              <%= image_tag "user", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= image_tag "user", class: "avatar-large" %>
             <% end %>
-           <p> <%= current_user.username %> </p>
-            <p> Member since: <%= current_user.created_at.to_datetime %> </p>
+           <p><strong> <%= current_user.username %></strong> </p>
+            <p> Member since: <%= current_user.created_at.strftime("%B #{current_user.created_at.day.ordinalize}, %Y") %> </p>
           </div>
 
           <div class="order-container">
             <div class = "order-description">
-              <h2 style="font-weight: 700;">Order History</h2>
-              <%= link_to "See all", bookings_path%>
-              <p>Order 1. <strong>Another tent</strong></p>
-              <p>Order 2. <strong>Best tent</strong></p>
-              <p>Order 3. <strong>Best tent ever</strong></p>
-              <p>Description: Omnis molestias fugiat. Saepe rerum asperiores. Et numquam rem.</p>
+              <h2 style="font-weight: 700;">My Submitted Bookings</h2>
+              <span class="goback-button"><%= link_to "See all", bookings_path %></span>
+              <ol class= "list-inline">
+              <li><strong>Most recent:</strong></li>
+              <li><span style="color:grey"><%= current_user.bookings.last.equipment.name %> from <%= current_user.bookings.last.equipment.user.username %>.  <br>Status: <%= current_user.bookings.last.status %> </span></li>
             </div>
           </div>
         </div>

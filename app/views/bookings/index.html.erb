@@ -1,4 +1,5 @@
-<div class="container" style="height: 40vw;">
+<div class="container">
+<div class="container-booking" style="height: 40vw;">
 <br>
 <div class="goback-button"><%= link_to "← Go back", equipments_path %></div>
 <% unless @my_bookings.nil? %>
@@ -26,17 +27,6 @@
   <% end %>
 <% end %>
 </div>
+</div>
   <%#=  each do to see all booking received %>
   <%#=  each do to see all booking submitted %>
-<% unless @recieved_bookings.nil? %>
-  <div class="container">
-    <h4>Received bookings</h4>
-    <ul>
-    <% @received_bookings.each do |booking| %>
-
-    <p><%= booking.start_date %></p>
-    <%= link_to "Confirm",  booking_path(booking, {status: "confirmed"}), data: {turbo_method: :patch} %>
-    <%= link_to "Reject",  booking_path(booking, {status: "cancelled"}), data: {turbo_method: :patch} %>
-    <% end %>
-  </div>
-<% end %>
