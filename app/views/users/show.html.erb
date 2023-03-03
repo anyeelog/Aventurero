@@ -23,8 +23,10 @@
               <span class="goback-button"><%= link_to "See all", bookings_path %></span><br>
               <ol class= "list-inline">
               <br>
+              <% unless current_user.bookings.empty? %>
               <li><strong>Most recent:</strong></li><br>
               <li><span style="color:grey"><%= current_user.bookings.last.equipment.name %> from <%= current_user.bookings.last.equipment.user.username %>.  <br>Status: <%= current_user.bookings.last.status %> </span></li>
+              <% end %>
             </div>
           </div>
         </div>
